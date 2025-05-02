@@ -64,11 +64,12 @@ npx parcel index.html
 - npx is used to run them without installing globally.
 ### 📥 Installing React & ReactDOM Locally
 Instead of using CDN links, it’s best practice to install React via npm:
-``bash
+```bash
 npm install react
 npm install react-dom
 ```
 This keeps all dependencies local to your project.
+
 ### 📦 Importing React into Your App
 Once installed, import React and ReactDOM in your JS file like this:
 ```js
