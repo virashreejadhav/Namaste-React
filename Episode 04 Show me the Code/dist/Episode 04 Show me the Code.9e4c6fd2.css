@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.header {
+  color: #000;
+  background-color: #01a390;
+  border-radius: 5px;
+  justify-content: space-between;
+  width: auto;
+  margin: 10px;
+  font-weight: bold;
+  display: flex;
+  box-shadow: -1px 4px 20px 14px #0003;
+}
+
+.logo {
+  width: 100px;
+  padding-left: 10px;
+}
+
+.nav-items {
+  width: auto;
+  padding: 0 10px;
+}
+
+.nav-items ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-items > ul > li {
+  cursor: pointer;
+  padding: 40px 10px 0 0;
+  font-size: large;
+}
+
+.restaurant-card {
+  background-color: #b0c4de;
+  border-radius: 20px;
+  width: 250px;
+  margin: 10px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.cardImage {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.Search {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.restaurant-container {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+}
+/*# sourceMappingURL=Episode 04 Show me the Code.9e4c6fd2.css.map */
