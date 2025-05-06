@@ -1,0 +1,196 @@
+## Episode 02 - Igniting Our App
+
+### Theory
+
+**1) What is NPM?**
+
+-  NPM is a package manager.
+-  A package manager for JavaScript (and especially for Node.js).
+-  It allows developers to install, manage, share, and publish code packages (modules).
+-  It comes bundled with Node.js, so when you install Node.js, you get NPM too.
+  **It consists of three components:** 
+  - The website 
+  - The command line interface 
+  -   The registry 
+  **Use npm to:** 
+-  adapt packages of code for your apps, or incorporate packages as they are. 
+-  Download standalone tools you can use right away. 
+- Run packages without downloading using npx. 
+- Share code with any npm user anywhere. 
+- Restrict code to specific developers. 
+- Create organizations to coordinate package maintenance,coding and developers. 
+- Manage multiple versions of the code and code dependencies. 
+- Update applications easily when underlying code is updated.
+
+---
+
+**2) What is `Parcel/Webpack`? Why do we need it?**
+
+- Both Parcel and Webpack are JavaScript bundlers.
+- They take your application’s JavaScript, CSS, HTML, images, etc., and bundle them into optimized files that browsers can understand and load efficiently.
+
+  **Why do we need a bundler?**
+
+- In modern frontend apps, we write modular code using many .js, .jsx, .css, and other files. Browsers don’t support modules out-of-the-box efficiently, and loading 100s of files increases page load time.
+- Tools like Webpack and Parcel solve this by:
+- Bundling everything into a few optimized files.
+- Handling module resolution.
+- Transpiling code (like JSX/ES6 to browser-compatible JS using Babel).
+- Minifying code for faster loading.
+- Supporting hot reloading during development.
+
+**Summary**
+- We use bundlers like Webpack or Parcel in modern web development to improve performance and manage complexity. For example, in a React project, I might write JSX, use ES6 imports, and include SCSS or images. The browser doesn’t understand these directly. Parcel/Webpack handles bundling, transpiling, optimizing assets, and reducing file sizes. Parcel is great for quick setups with zero config, while Webpack is better for custom setups and larger apps.
+---
+
+  **3)  What is .parcel-cache?**
+
+ - .parcel-cache is a folder created by Parcel to store compiled files and dependency graphs for faster builds. It speeds up development by caching unchanged files, so only modified files are rebuilt.
+
+--- 
+
+   **4)  What is npx?**
+
+   - npx is a tool that comes with npm. It allows me to run Node.js packages without installing them globally. For example, npx create-react-app runs the CLI tool directly without polluting my system.
+---
+
+   **5) Dependencies vs devDependencies**
+
+    - I put libraries needed by the app at runtime in dependencies, and tools used only for development (like linters or test frameworks) in devDependencies.
+    - dependencies -> Used in production	-> E.g., react, axios
+     - devDependencies -> Only used in development -> 	E.g., eslint, webpack
+
+    ---
+
+  **6)What is Tree Shaking?**
+
+       - Tree shaking is a process to remove unused or "dead" code during bundling. Tools like Webpack or Parcel analyze imports and remove functions or modules that aren’t used, reducing final bundle size.
+---
+   **7) What is Hot Module Replacement (HMR)?**
+
+   - HMR lets me update modules in a running app without reloading the whole page. It preserves the app state and speeds up frontend development, especially with React or Vue.
+  
+  **8) List down your favorite 5 superpowers of Parcel and describe any 3 of them in your own words.**
+
+   - Zero-config setup ✅
+- Built-in Hot Module Replacement ✅
+- Fast caching with .parcel-cache ✅
+- Code splitting
+- TypeScript, SCSS, JSX support out of the box
+- 
+  `Zero-config:` I don’t need to write a config file to get started. Parcel automatically detects entry files and handles everything.
+  
+  `HMR:` During development, I can see instant UI updates without refreshing the browser.
+  
+  `Caching:` Parcel stores build output in .parcel-cache, so it only recompiles what's changed, speeding up rebuilds.
+---
+
+  **9) What is .gitignore? What should/shouldn't be added?**
+
+  - .gitignore tells Git which files or folders to exclude from version control. I add things like:
+
+     - node_modules/
+     - .env (secrets)
+     - .parcel-cache/
+     - dist/ (build output)
+-  I avoid ignoring source files or anything needed to build/run the app.
+---
+
+**10) Difference between package.json and package-lock.json**
+
+- package.json definIt’s auto-managed by npm. Modifying it can break dependency resolution or cause mismatched versions. Instead, I let npm update it using install commands.es what we want. package-lock.json locks down exactly what’s installed to ensure consistent installs across machines.
+- package.json -> Lists dependencies, Editable by devs
+- package-lock.json -> Locks exact versions, Auto-generated by npm
+  
+---
+
+  **11) Why shouldn’t I modify package-lock.json manually?**
+
+  - It’s auto-managed by npm. Modifying it can break dependency resolution or cause mismatched versions. Instead, I let npm update it using install commands.
+ 
+---
+
+ **12) What is node_modules? Should we push it to Git?**
+
+   - node_modules is where npm installs all dependencies.
+   - ❌ It should never be pushed to Git—it’s huge and platform-specific. The correct dependencies are tracked in package.json, and devs can use npm install to recreate it.
+
+---
+
+**13) What is the dist folder?**
+
+- dist stands for “distribution.”
+- It contains the final production-ready, optimized version of my app after bundling—this is what gets deployed.
+
+---
+
+**14) What is browserslist?**
+
+- It’s a config that tells tools like Babel or PostCSS which browsers to support. This helps generate compatible code (e.g., for older browsers).
+
+  ``` json
+  "browserslist": [
+  "> 0.5%",
+  "last 2 versions",
+  "not dead"
+]```
+
+---
+**15)Different Bundlers Parcel vs Webpack vs Vite**
+
+- A bundler is a tool that takes your application code (JavaScript, CSS, HTML, images, etc.), and combines and transforms it into optimized files (bundles) that the browser can load efficiently.
+
+`1. Webpack (The Configurable Workhorse)`
+🔹 Overview:
+Webpack is a highly configurable and widely adopted bundler. It uses a concept of entry points, loaders, and plugins to transform and bundle code.
+
+🔹 Key Features:
+- Manual configuration (webpack.config.js)
+- Loaders: Handle files like .js, .css, .scss, .ts, etc.
+- Plugins: Add additional functionality (e.g., minification, environment setup)
+- Code splitting
+- Tree shaking
+- HMR with webpack-dev-server
+
+🔹 Ideal For:
+- Large-scale enterprise apps where you need fine control over build processes.
+
+⚡ 2. Parcel (Zero-Config, Beginner-Friendly)
+🔹 Overview:
+- Parcel is a zero-config bundler that automatically detects file types and handles most setup behind the scenes. It’s known for simplicity and fast startup.
+
+🔹 Key Features:
+- Zero configuration
+- Built-in support for JSX, TypeScript, SCSS, etc.
+- Automatic HMR
+- Fast build caching with .parcel-cache
+- Code splitting and tree shaking
+- Multi-threaded builds
+
+🔹 Ideal For:
+- Developers who want quick setup with minimal configuration for small to medium projects.
+
+🚀 3. Vite (Next-Gen Fast Dev Server + Bundler)
+🔹 Overview:
+- Vite is a modern bundler focused on fast development experience. It uses native ES modules for dev and Rollup for production builds.
+
+🔹 Key Features:
+- Lightning-fast dev server using native ESM
+- Instant HMR
+- Uses Rollup internally for optimized production bundles
+- Minimal configuration
+- Framework-aware (e.g., Vite + React/Vue templates)
+
+🔹 Ideal For:
+- Modern frontend projects that need fast reloads and modern tooling with Vue, React, or Svelte.
+
+## Summary:-
+Parcel is great for quick starts with zero configuration. Webpack offers full control and is highly customizable, best for large-scale apps. Vite is a modern tool built for speed, using native ES modules and ideal for today’s frontend frameworks like React and Vue. I choose based on the project’s size, complexity, and performance needs.
+
+
+---
+
+
+
+   - 
+
