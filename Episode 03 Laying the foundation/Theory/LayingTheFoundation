@@ -1,0 +1,86 @@
+# Namaste React - Chapter 03: Laying the Foundation
+
+This chapter covers the fundamentals of JSX, script tag types, and component rendering styles in React. Below is a summarized explanation with examples to help reinforce your understanding.
+
+---
+
+## 🧠 What is JSX?
+
+**JSX (JavaScript XML)** is a syntax extension for JavaScript that allows you to write HTML-like code directly within your JavaScript files. It’s primarily used with React to describe UI structure in a more readable and expressive way.
+
+- Instead of using `React.createElement()`, JSX simplifies element creation.
+- JSX is not HTML — it compiles down to `React.createElement()` calls behind the scenes.
+
+### ✅ Example using JSX:
+
+```js
+const element = <h1>I Love JSX!</h1>;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(element);
+```
+
+### ❌ Example without JSX:
+
+```js
+const element = React.createElement('h1', {}, 'I do not use JSX!');
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(element);
+```
+
+## 🚀 Superpowers of JSX
+
+- JSX provides the ability to combine HTML-like structure and JavaScript logic within the same file. This improves readability, component encapsulation, and maintainability.
+
+**Example:**
+
+```js
+function Greeting(user) {
+  return <h1>{user}, how are you?</h1>;
+}
+```
+
+- Logic and markup live together
+- Easier to debug and refactor
+- Encourages component-based architecture
+
+## 🏷️ Role of the type Attribute in <script> Tags
+
+- The type attribute in the <script> tag defines the scripting language used in the document. While its optional in modern HTML5 (defaults to JavaScript), it can still be explicitly specified for clarity or when using alternative scripting languages.
+
+## Syntax
+
+```
+<script type="text/javascript"></script>
+```
+
+- `text/ecmascript` : this value indicates that the script is following the EcmaScript standards.
+- `module`: This value tells the browser that the script is a module that can import or export other files or modules inside it.
+- `text/babel` : This value indicates that the script is a babel type and required bable to transpile it.
+- `text/typescript`: As the name suggest the script is written in TypeScript.
+
+### 🔄 JSX Component Rendering Styles
+
+- There are multiple ways to use React components in JSX, and understanding the differences is essential.
+
+**1. {TitleComponent}**
+
+- Refers to a JavaScript variable or function reference.
+- Not invoked or rendered — just a reference.
+
+**2. <TitleComponent />**
+
+- Renders the TitleComponent.
+- Shorthand self-closing syntax for components with no children.
+
+**3. <TitleComponent></TitleComponent>**
+
+- Same as the above, but used when you want to pass children elements.
+
+- Example with Children:
+
+```
+<TitleComponent>
+  <ChildOne />
+  <ChildTwo />
+</TitleComponent>
+```
